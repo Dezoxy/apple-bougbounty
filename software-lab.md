@@ -2,6 +2,8 @@
 
 This lab is for legitimate Apple Security Bounty research around Activation Lock behavior. It supports static analysis, evidence collection, and authorized dynamic analysis. It must not be used to unlock devices, attack Apple Accounts, spoof Apple services, or bypass Activation Lock.
 
+For an Activation Lock bounty claim, dynamic evidence is required. Static reverse engineering can explain why a behavior might exist, but it is not proof by itself. A credible report needs repeatable behavior on a real affected build, captured through video, notes, logs where available, and exact expected-versus-actual results.
+
 ## Tooling Tiers
 
 ### Tier 1 - Required Evidence Tools
@@ -45,6 +47,8 @@ Recommended use:
 - document likely components and state machines
 - build hypotheses for Apple-supported tests
 
+Static analysis output should feed `test-matrix.md`. It should not be treated as a finding unless dynamic testing proves a security boundary failure.
+
 Do not modify firmware, bypass signing, or publish exploit details.
 
 ### Tier 3 - Network Observation
@@ -80,11 +84,30 @@ Use only where authorized:
 - Security Research Device workflows
 - approved test environments
 
-Do not use dynamic tools to produce or automate an Activation Lock bypass.
+Do not use dynamic tools to produce or automate an Activation Lock bypass. On a normal locked production iPhone, expect system-level dynamic instrumentation to be blocked; that is part of the platform security model, not a lab setup problem.
+
+## Proof Strategy
+
+Use three layers, in this order:
+
+1. Dynamic black-box testing as primary proof.
+2. Static reverse engineering as support for hypotheses and report explanation.
+3. SRD-based or otherwise authorized dynamic instrumentation only when the research target supports it.
+
+Black-box dynamic tests are the default for this device:
+
+- power-on to Activation Lock baseline
+- Finder update or restore
+- recovery-mode restore
+- Apple Configurator restore
+- latest public iOS comparison
+- public beta comparison when acceptable
+
+The expected result for these flows is that Activation Lock remains enforced. A bounty lead starts only if a supported flow creates repeatable unexpected behavior, such as exposed private data, incorrect ownership state, or setup completion without valid owner authentication.
 
 ## Recommended Default Install
 
-For this project, install Tier 1 and Tier 2 first:
+For this project, install Tier 1 and Tier 2 first, then use them to support dynamic black-box tests:
 
 ```bash
 brew install jq exiftool libimobiledevice radare2 binwalk
@@ -97,7 +120,7 @@ Install Wireshark only when we need network timing evidence:
 brew install --cask wireshark
 ```
 
-Delay Frida until there is an authorized dynamic target:
+Delay Frida until there is an authorized dynamic target, ideally an Apple Security Research Device:
 
 ```bash
 python3 -m pip install --user frida-tools
@@ -118,4 +141,3 @@ python3 -m pip install --user frida-tools
 - Apple Security Research Device Program: https://security.apple.com/research-device/
 - Ghidra: https://github.com/NationalSecurityAgency/ghidra
 - Frida iOS documentation: https://frida.re/docs/ios/
-

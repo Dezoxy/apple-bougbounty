@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+./scripts/safety-scan.sh
+./scripts/check-evidence-names.sh
+

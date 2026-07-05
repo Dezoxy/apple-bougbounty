@@ -6,4 +6,6 @@ evidence/*.jpg
 evidence/*.png
 logs/*
 !logs/.gitkeep
-
+research/ipsw-inventory/*
+!research/ipsw-inventory/.gitkeep
+*.ipsw

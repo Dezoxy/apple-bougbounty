@@ -1,0 +1,9 @@
+.DS_Store
+evidence/*.mov
+evidence/*.mp4
+evidence/*.heic
+evidence/*.jpg
+evidence/*.png
+logs/*
+!logs/.gitkeep
+

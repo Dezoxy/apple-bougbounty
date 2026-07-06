@@ -6,6 +6,7 @@ Installed hook path: `.githooks/pre-commit`
 
 - `./scripts/safety-scan.sh`
 - `./scripts/check-evidence-names.sh`
+- `./scripts/check-agents-sync.sh`
 
 ## Install
 

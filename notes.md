@@ -1,21 +1,25 @@
 # Research Notes
 
+> Device identifiers (serial, IMEI, IMEI2, MEID, EID, part/model number) are
+> redacted here and kept in `notes.private.md`, which is gitignored. See that
+> file for the raw values. Do not paste identifiers back into this file.
+
 ## Device
 
 Model: iPhone 16 Pro Max
 Configuration: 512GB Desert Titanium
-Model number: A3084
-Part number: MYW93LL/A
-Serial: MWVV5P7X3J
-IMEI: 354331127574425
-IMEI2: 354331127725761
-MEID: 35433112757442
-EID: 89049032007408885200209508025640
+Model number: REDACTED — see notes.private.md
+Part number: REDACTED — see notes.private.md
+Serial: REDACTED — see notes.private.md
+IMEI: REDACTED — see notes.private.md
+IMEI2: REDACTED — see notes.private.md
+MEID: REDACTED — see notes.private.md
+EID: REDACTED — see notes.private.md
 iOS version: 26.5
 iOS build:
 PDF report product version: 18.5
 PDF report date: 2026-06-30
-PDF report path: /Users/horvathtoom/Documents/iphone16-pro-max/output/pdf/iphone-16-pro-max-device-report-MWVV5P7X3J.pdf
+PDF report path: REDACTED — see notes.private.md
 PDF report limitation: Prepared from supplied lookup details; not an independent Apple, carrier, or GSX verification.
 Proof of ownership available:
 Apple Account controlled by me:

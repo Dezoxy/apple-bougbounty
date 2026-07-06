@@ -13,8 +13,15 @@ set -euo pipefail
 command -v jq >/dev/null 2>&1 || exit 0
 
 payload="$(cat)"
-path="$(printf '%s' "$payload" | jq -r '.tool_input.file_path // empty')"
-content="$(printf '%s' "$payload" | jq -r '.tool_input.content // .tool_input.new_string // empty')"
+# Fail open on malformed JSON (real hook payloads are always valid): a parse
+# error must not block legitimate edits. Covers Write (.content), Edit
+# (.new_string), and MultiEdit (.edits[].new_string).
+path="$(printf '%s' "$payload" | jq -r '.tool_input.file_path // empty' 2>/dev/null || true)"
+content="$(printf '%s' "$payload" | jq -r '
+  .tool_input.content
+  // .tool_input.new_string
+  // ([.tool_input.edits[]?.new_string] | join("\n"))
+  // empty' 2>/dev/null || true)"
 
 [[ -z "$content" ]] && exit 0
 

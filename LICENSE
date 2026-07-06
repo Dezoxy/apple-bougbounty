@@ -1,0 +1,17 @@
+Copyright (c) 2026 the repository owner. All rights reserved.
+
+This repository contains private Apple Security Bounty research materials.
+
+No license is granted. You may not copy, modify, distribute, publish, or use
+any part of this repository without the prior written permission of the owner.
+
+Responsible disclosure: any genuine security defect identified through this
+research is intended for private submission to Apple via the Apple Security
+Bounty program (https://security.apple.com/bounty/) before any other
+disclosure. This repository must not be used to bypass Activation Lock, attack
+Apple Accounts, impersonate Apple services, or access devices or data without
+authorization.
+
+THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. THE OWNER IS NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY
+ARISING FROM THE USE OF THESE MATERIALS.

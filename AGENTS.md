@@ -39,9 +39,9 @@ Not allowed:
 
 1. Check current branch and diff.
 2. Run `./scripts/check-tools.sh` when software-lab state matters.
-3. Run `./scripts/safety-scan.sh` before committing agent prompts or scripts.
-4. Run `./scripts/check-evidence-names.sh` before committing evidence indexes.
-5. Commit only the files required by the task.
+3. Run `./scripts/preflight.sh` before committing (runs safety-scan, evidence-name, agent-sync, and shellcheck).
+4. Commit only the files required by the task.
+5. Never commit `notes.private.md` or any `*.private.md`; keep raw device identifiers out of tracked files.
 6. Use a branch and draft PR for non-trivial changes.
 
 ## File Roles
@@ -52,9 +52,12 @@ Not allowed:
 - `evidence-index.md`: evidence provenance and references.
 - `report-template.md`: Apple-style finding report template.
 - `research/`: hypotheses, component map, and static notes.
-- `.agents/skills/`: repo-local agent workflows.
-- `.agents/subagents/`: role prompts for focused review.
+- `.claude/agents/`: active Claude Code subagents (auto-discovered; carry YAML frontmatter).
+- `.claude/skills/`: active Claude Code skills (auto-discovered).
+- `.claude/settings.json`: permission allowlist and PreToolUse/PostToolUse safety hooks.
+- `.agents/skills/`, `.agents/subagents/`: portable AGENTS.md mirror of the above; kept in sync by `scripts/check-agents-sync.sh`.
 - `.githooks/`: local repository hooks.
+- `notes.private.md`: gitignored raw device identifiers referenced by redacted tracked files.
 
 ## Reporting Standard
 

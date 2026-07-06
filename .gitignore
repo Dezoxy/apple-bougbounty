@@ -1,4 +1,8 @@
 .DS_Store
+
+# Private, un-redacted device identifiers and personal data. Never commit.
+*.private.md
+notes.private.md
 evidence/*.mov
 evidence/*.mp4
 evidence/*.heic
